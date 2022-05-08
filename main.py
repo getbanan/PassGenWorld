@@ -20,6 +20,7 @@ def update_characters_left(number_of_characters):
 
 password_length = int(input("Jak długie ma być hasło?"))
 
+#dlugosc hasla
 if password_length < 7:
     print("Hasło musi mieć minimum 7 znaków.")
     sys.exit(0)
@@ -27,26 +28,55 @@ else:
     characters_left = password_length
 
 #male litery
-lowercase_letters = int(input("Ile małych liter ma mieć hasło?"))
+while True:
+    try:
+        lowercase_letters = int(input("Ile małych liter ma mieć hasło?"))
+        break
+    except ValueError:
+        print("Proszę podaj cyfrę:")
+        continue
+print("Ilość małych liter:", characters_left)
 update_characters_left(lowercase_letters)
 
 #duze litery
-uppercase_letters = int(input("Ile dużych liter ma mieć hasło?"))
+while True:
+    try:
+        uppercase_letters = int(input("Ile dużych liter ma mieć hasło?"))
+        break
+    except ValueError:
+        print("Proszę podaj cyfrę:")
+        continue
+print("Ilość dużych liter:", characters_left)
 update_characters_left(uppercase_letters)
 
 #znaki specjalne
-special_characters = int(input("Ile znaków specjalnych ma mieć hasło?"))
+while True:
+    try:
+        special_characters = int(input("Ile znaków specjalnych ma mieć hasło?"))
+        break
+    except ValueError:
+        print("Proszę podaj cyfrę:")
+        continue
+print("Ilość znaków specjalnych:", characters_left)
 update_characters_left(special_characters)
 
 #cyfry
-digits = int(input("Ile cyfr ma mieć hasło?"))
+while True:
+    try:
+        digits = int(input("Ile cyfr ma mieć hasło?"))
+        break
+    except ValueError:
+        print("Proszę podaj cyfrę:")
+        continue
+print("Ilość cyfr:", characters_left)
 update_characters_left(digits)
 
 
 if characters_left > 0:
-    print("Nie wszystkie znaki zostały wykorzystane. Hasło zostanie uzupełnione małymi literami.")
+    print("\nNie wszystkie znaki zostały wykorzystane. Hasło zostanie uzupełnione małymi literami.")
     lowercase_letters += characters_left
 
+# informacje nt generowanego hasla
 print()
 print("Długość hasła:", password_length)
 print("Ilość małych liter:", lowercase_letters)
@@ -74,4 +104,5 @@ for _ in range(password_length):
         digits -= 1
 
 random.shuffle(password)
+
 print("Wygenerowane hasło:", "".join(password))
